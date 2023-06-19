@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <link rel="stylesheet" href="css/semantic.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="mapid" style="position: relative; outline: none; "></div>
+    <div id="map-overlay" class="overlay" style="top: 10px;">
+        <div class="overlay-content">
+            <div><img src="https://csrs.ku.ac.th/wegis/Images/role/kurdi.png" class="small ui image"
+                    style="width: 150px;"></div>
+        </div>
+    </div>
+    <div id="map-overlay" class="overlay" style="top: 10px;">
+        <div class="overlay-content">
+            <div><img src="https://csrs.ku.ac.th/wegis/Images/role/kurdi.png" class="small ui image"
+                    style="width: 150px;"></div>
+        </div>
+
+    </div>
+
+    </div>
+    <div id="map-overlay" class="overlay" style="top: 10px;">
+        <div class="overlay-content">
+            <div><img class="info" src="https://csrs.ku.ac.th/wegis/Images/role/kurdi.png" class="small ui image"
+                data-content="การพัฒนาระบบวิเคราะห์ความเสี่ยงภัยแล้งด้วยข้อมูลภาพถ่ายดาวเทียมหลายระบบ" 
+                    style="width: 150px;"></div>
+        </div>
+    </div>
+    <div id="map-overlay-year" class="overlay" style="top: 80px; z-index: 1000;">
+        <div class="overlay-content" style="width: 28rem;" >
+            <div style="display: flex;">
+                <select name="select_year" class="ui fluid search dropdown">
+                    <option value="2566">ปี 2566</option>
+                    <option value="2565">ปี 2565</option>
+                    <option value="2564">ปี 2564</option>
+                    <option value="2563">ปี 2563</option>
+                    <option value="2562">ปี 2562</option>
+                    <option value="2561">ปี 2561</option>
+                    <option value="2560">ปี 2560</option>
+                    <option value="2559">ปี 2559</option>
+                </select>
+                <a id="layers-list-toggler" class="basic ui icon button" style="margin-left: 0.5rem;">
+                    <i class="bars icon"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="map-overlay-form" class="overlay" style="top: 150px;">
+        <div class="overlay-content" style="width: 28rem;">
+            <div class="ui styled  accordion">
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    Hotspot
+                    <a  style="float: right;" class=""><i class="info circle blue icon" data-content="Hotspot"  ></i></a>
+                </div>
+                <div class="content">
+                    <div class="ui form">
+                        <select name="skills" class="ui fluid search dropdown">
+                            <option value="">-- แสดงทุกเดือน --</option>
+                            <option value="01">มกราคม</option>
+                            <option value="02">กุมภาพันธ์</option>
+                            <option value="03">มีนาคม</option>
+                            <option value="04">เมษายน</option>
+                            <option value="05">พฤษภาคม</option>
+                            <option value="06">มิถุนายน</option>
+                            <option value="07">กรกฎาคม</option>
+                            <option value="08">สิงหาคม</option>
+                            <option value="09">กันยายน</option>
+                            <option value="10">ตุลาคม</option>
+                            <option value="11">พฤศจิกายน</option>
+                            <option value="12">ธันวาคม</option>
+                        </select>
+                        <div class="grouped fields">
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="Hotspot small">
+                                    <label>Hotspot Small</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="Hotspot medium">
+                                    <label>Hotspot Medium</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="Hotspot large">
+                                    <label>Hotspot Large</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="Hotspot x-large">
+                                    <label>Hotspot X-Large</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    แปลงเพาะปลูกพืชข้าว
+                    <a  style="float: right;" class=""><i class="info circle blue icon" data-content="แปลงเพาะปลูกพืชข้าว"  ></i></a>
+                </div>
+                <div class="content">
+                    <div class="ui form">
+                        <select name="skills" class="ui fluid search dropdown">
+                            <option value="">-- แสดงทุกเดือน --</option>
+                            <option value="01">มกราคม</option>
+                            <option value="02">กุมภาพันธ์</option>
+                            <option value="03">มีนาคม</option>
+                            <option value="04">เมษายน</option>
+                            <option value="05">พฤษภาคม</option>
+                            <option value="06">มิถุนายน</option>
+                            <option value="07">กรกฎาคม</option>
+                            <option value="08">สิงหาคม</option>
+                            <option value="09">กันยายน</option>
+                            <option value="10">ตุลาคม</option>
+                            <option value="11">พฤศจิกายน</option>
+                            <option value="12">ธันวาคม</option>
+                        </select>
+                        <div class="grouped fields">
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="แปลงเพาะปลูกพืชข้าว small">
+                                    <label>แปลงเพาะปลูกพืชข้าว Small</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="แปลงเพาะปลูกพืชข้าว medium">
+                                    <label>แปลงเพาะปลูกพืชข้าว Medium</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="แปลงเพาะปลูกพืชข้าว large">
+                                    <label>แปลงเพาะปลูกพืชข้าว Large</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="แปลงเพาะปลูกพืชข้าว x-large">
+                                    <label>แปลงเพาะปลูกพืชข้าว X-Large</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title">
+                    <i class="dropdown icon"></i>
+                    แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์
+                    <a  style="float: right;" class=""><i class="info circle blue icon" data-content="แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์"  ></i></a>
+                </div>
+                <div class="content">
+                    <div class="ui form">
+                        <select name="skills" class="ui fluid search dropdown">
+                            <option value="">-- แสดงทุกเดือน --</option>
+                            <option value="01">มกราคม</option>
+                            <option value="02">กุมภาพันธ์</option>
+                            <option value="03">มีนาคม</option>
+                            <option value="04">เมษายน</option>
+                            <option value="05">พฤษภาคม</option>
+                            <option value="06">มิถุนายน</option>
+                            <option value="07">กรกฎาคม</option>
+                            <option value="08">สิงหาคม</option>
+                            <option value="09">กันยายน</option>
+                            <option value="10">ตุลาคม</option>
+                            <option value="11">พฤศจิกายน</option>
+                            <option value="12">ธันวาคม</option>
+                        </select>
+                        <div class="grouped fields">
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์ small">
+                                    <label>แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์ Small</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์ medium">
+                                    <label>แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์ Medium</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์ large">
+                                    <label>แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์ Large</label>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <div class="ui radio checkbox">
+                                    <input type="radio" name="radio_select" value="แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์ x-large">
+                                    <label>แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์ X-Large</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title" style="pointer-events: none;">
+                </div>
+                <div class="content">
+                </div>
+                <div class="active  content">
+                    <div class="ui  checkbox">
+                        <label id="sf_rice_label">ความอุดมสมบูรณ์ของดินของพืชข้าว</label>
+                        <input type="checkbox" name="radio_select_2" value="sf_rice">
+                    </div>
+                    <a  style="float: right;" class=""><i class="info circle blue icon" data-content="ความอุดมสมบูรณ์ของดินของพืชข้าว"  ></i></a>
+
+                </div>
+                <div class="active content">
+                    <div class="ui  checkbox">
+                        <label id="sf_maize_label">ความอุดมสมบูรณ์ของดินของพืชข้าวโพดเลี้ยงสัตว์</label>
+                        <input type="checkbox" name="radio_select_2" value="sf_maize">
+                    </div>
+                    <a  style="float: right;" class=""><i class="info circle blue icon" data-content="ความอุดมสมบูรณ์ของดินของพืชข้าวโพดเลี้ยงสัตว์"  ></i></a>
+
+                </div>
+                <div class="active content">
+                    <div class="ui  checkbox">
+                        <label id="forest_area_label">พื้นที่ป่าไม้/ป่าสงวน</label>
+                        <input type="checkbox" name="radio_select_2" value="forest_area">
+                    </div>
+                    <a  style="float: right;" class=""><i class="info circle blue icon" data-content="พื้นที่ป่าไม้/ป่าสงวน"  ></i></a>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+    </div>
+
+    <!-- axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js "></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <!-- <script src="js/jquery.min.js"></script> -->
+    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <script src="js/semantic.min.js"></script>
+    <script src="js/map.js"></script>
+
+</body>
+
+</html>
