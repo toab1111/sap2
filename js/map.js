@@ -50,6 +50,7 @@ var mymap = L.map('mapid', {
 
 
 
+
 // L.control.layers(baseMaps).addTo(mymap);
 var legend = L.control({ position: 'topright' });
 
@@ -135,58 +136,128 @@ mymap.on('click', openOverlay);
 $('.ui.accordion')
   .accordion()
   ;
-
-$('.max.example .ui.normal.dropdown')
-  .dropdown({
-    maxSelections: 3
-  })
-  ;
-$('.max.example .ui.special.dropdown')
-  .dropdown({
-    useLabels: false,
-    maxSelections: 3
-  })
-  ;
-
-$('.ui.checkbox').checkbox();
+var $layersList = $("#layers-list");
 
 
-$('.ui.dropdown').dropdown();
+$('#select_year_drop').change(function () {
+  //Use $option (with the "$") to see that the variable is a jQuery object
+  var $option = $(this).find('option:selected');
+  //Added with the EDIT
+  var value = $option.val();//to get content of "value" attrib
+  var text = $option.text();//to get <option>Text</option> content
+  // value = "x-large-2564"
+  $('.ui.dropdown.month').dropdown('clear')
+  console.log(value);
+  if ((value || "").length) {
+    setTimeout(function () {
+      $layersList.find('.field:not([data-layer^="' + value + '"])').hide(0);
+      $layersList.find('.field[data-layer^="' + value + '"]').show(0);
+    }, 250);
+  } else {
+    setTimeout(function () {
+      $layersList.find(".field[data-layer]").show(0);
+    }, 250);
+  }
+});
+$('.ui.dropdown.year').dropdown({})
+
+$('.ui.dropdown.month').dropdown({
+  onChange: function (value) {
+    var year = $('#select_year_drop').val();
+    var keyword = year + "_" + value + "_";
+    console.log(value);
+    console.log(year);
+
+    if ((value || "").length) {
+      $(this).next(".dropdown.icon")
+        .removeClass("dropdown")
+        .addClass("delete");
+
+      setTimeout(function () {
+        $layersList.find('.field:not([data-layer*="' + keyword + '"])').hide(0);
+        $layersList.find('.field[data-layer*="' + keyword + '"]').show(0);
+      }, 250);
+    } else {
+      setTimeout(function () {
+        $layersList.find('.field[data-layer^="' + year + '"]').show(0);
+      }, 250);
+    }
+  }
+});
+
+$('.ui.dropdown .remove.icon').on('click', function (e) {
+  $(this).parent('.dropdown').dropdown('clear');
+  console.log('clear');
+  e.stopPropagation();
+});
+
+
+let layersStore = [];
+var all_layer = L.layerGroup();
+
+
+$('.ui.radio.checkbox').checkbox({
+  uncheckable: true,
+  onChecked: function () {
+    var $this = $(this);
+    var value = $this.val();
+    all_layer.clearLayers();
+    // mymap.removeLayer(all_layer);
+
+    layersStore = []
+    layersStore.push(value)
+    console.log(layersStore);
+    if (value == "Hotspot small") {
+      forest_area_layer.addTo(all_layer)
+      all_layer.setZIndex(11);
+      all_layer.addTo(mymap)
+    }
+    if (value == "Hotspot medium") {
+      sf_rice_layer.addTo(all_layer)
+      all_layer.setZIndex(11);
+      all_layer.addTo(mymap)
+    }
+
+
+
+  },
+  onUnchecked: function () {
+    var $this = $(this);
+    var value = $this.val();
+
+    layersStore = []
+    all_layer.clearLayers();
+    mymap.removeLayer(all_layer);
+    console.log(layersStore);
+  }
+});
+$('.ui.checkbox.square').checkbox();
+
+
+
+
 
 $('.info').popup();
 
 
-const radioButtons = document.querySelectorAll('input[name="radio_select_2"]');
+
+
+
+// function clearSelection(radioButton) {
+//   $('.ui.radio.checkbox').checkbox('uncheck');
+// }
+
+
+const radioButtons2 = document.querySelectorAll('input[name="radio_select_2"]');
 // Add event listener to each radio button
-radioButtons.forEach(function (radioButton) {
+radioButtons2.forEach(function (radioButton) {
   radioButton.addEventListener('change', function () {
-    // console.log(radioButton);
     const selectedValue = this.value;
 
-    // if (checked===selectedValue) {
-    //   console.log(checked);
-
-    // }
-
-    // Get the selected radio button's value
-    // this.checked = false
-    // this.checked = false;
-    // radioButton.checked = false;
-    // this.checked = true
-
-    console.log(selectedValue);
-    console.log(this.checked);
-    // console.log(this.checked);
-    // print(this.checked)
-    // if (this.checked) {
-    //   // Remove the checked attribute to deselect the radio button
-    //   this.checked = false;
-    // }
     if (selectedValue == "forest_area" && this.checked) {
       forest_area_layer.addTo(mymap)
       forest_area_layer.setZIndex(11);
       forest_area_label.style.color = 'red'
-      checked = "forest_area"
     } if (selectedValue == "forest_area" && !this.checked) {
       forest_area_label.style.color = 'black'
       mymap.removeLayer(forest_area_layer);
@@ -195,17 +266,16 @@ radioButtons.forEach(function (radioButton) {
       sf_rice_layer.addTo(mymap)
       sf_rice_layer.setZIndex(10);
       sf_rice_label.style.color = 'red'
-      checked = "sf_rice"
     }
     if (selectedValue == "sf_rice" && !this.checked) {
       sf_rice_label.style.color = 'black'
       mymap.removeLayer(sf_rice_layer);
+
     }
     if (selectedValue == "sf_maize" && this.checked) {
       sf_maize_layer.addTo(mymap)
       sf_maize_layer.setZIndex(10);
       sf_maize_label.style.color = 'red'
-      checked = "sf_maize"
     }
     if (selectedValue == "sf_maize" && !this.checked) {
       sf_maize_label.style.color = 'black'
