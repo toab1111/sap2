@@ -7,35 +7,24 @@
     <title>โครงการ SAP 2</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
     <link rel="stylesheet" href="css/semantic.min.css">
-
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
     <div id="mapid" style="position: relative; outline: none; "></div>
-    <div id="map-overlay" class="overlay" style="top: 10px;">
+    <div id="map-overlay" class="overlay" style="top: 10px; left: 210px;">
         <div class="overlay-content">
-            <div><img src="https://csrs.ku.ac.th/wegis/Images/role/kurdi.png" class="small ui image"
-                    style="width: 150px;"></div>
+            <div><img src="css/KU_SubLogo_Thai.png" class="small ui image" style="width: 67px;"></div>
         </div>
     </div>
     <div id="map-overlay" class="overlay" style="top: 10px;">
         <div class="overlay-content">
-            <div><img src="https://csrs.ku.ac.th/wegis/Images/role/kurdi.png" class="small ui image"
-                    style="width: 150px;"></div>
+            <div><img src="css/Picture1.png" class="small ui image" style="width: 150px;"></div>
         </div>
-
     </div>
 
-    </div>
-    <div id="map-overlay" class="overlay" style="top: 10px;">
-        <div class="overlay-content">
-            <div><img class="info" src="https://csrs.ku.ac.th/wegis/Images/role/kurdi.png" class="small ui image"
-                    data-content="โครงการ SAP 2" style="width: 150px;"></div>
-        </div>
-    </div>
-    <div id="map-overlay-year" class="overlay" style="top: 80px; z-index: 1000;">
-        <div class="overlay-content" style="width: 28rem;">
+    <div id="map-overlay-year" class="overlay" style="top: 110px; z-index: 1000;">
+        <div class="overlay-content year-select">
             <div style="display: flex;">
                 <select name="select_year" id="select_year_drop" class="ui fluid search dropdown year">
                 </select>
@@ -46,12 +35,27 @@
         </div>
     </div>
 
-    <div id="map-overlay-form" class="overlay" style="top: 150px;">
-        <div class="overlay-content" style="width: 28rem;">
+    <div id="map-overlay-form" class="overlay" style="top: 180px;overflow-y: auto;max-height: 600px;">
+        <div class="overlay-content form-select">
             <div class="ui styled accordion" id="layers-list">
+                <div class="title" style="pointer-events: none;">
+                </div>
+                <div class="content">
+                </div>
+                <div class="active content">
+                    <div class="ui checkbox square">
+                        <label id="forest_area_label">พื้นที่ป่าไม้/ป่าสงวน <i style="color: green;"
+                                class="tree icon"></i>
+                        </label>
+                        <input type="checkbox" name="radio_select_2" value="forest_area">
+                    </div>
+                    <a style="float: right;" class=""><i class="info circle blue icon"
+                            data-content="Shapefile แนวเขตป่าสงวนแห่งชาติ (ที่ผ่านการพิจารณาของคณะทำงานพิจารณาแนวเขตป่าสงวนแห่งชาติ และคณะทำงานถ่ายทอดแนวเขตป่าสงวนแห่งชาติ ตามคำสั่งกรมป่าไม้ ที่ 308/2558 ลงวันที่ 28 มกราคม พ.ศ. 2558 และคำสั่งกรมป่าไม้ ที่ 390/2558 ลงวันที่ 6 กุมภาพันธ์ พ.ศ. 2558)"></i></a>
+                </div>
                 <div class="title">
                     <i class="dropdown icon"></i>
                     Hotspot
+                    <i style="color: red;" class="gripfire icon"></i>
                     <a style="float: right;" class=""><i class="info circle blue icon" data-content="Hotspot"></i></a>
                 </div>
                 <div class="content">
@@ -80,9 +84,11 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="title">
                     <i class="dropdown icon"></i>
-                    แปลงเพาะปลูกพืชข้าว
+                    พื้นที่เพาะปลูกพืชข้าว
+                    <img src="https://cdn-icons-png.flaticon.com/512/898/898133.png" style="width: 16px;" alt="Icon">
                     <a style="float: right;" class=""><i class="info circle blue icon"
                             data-content="แปลงเพาะปลูกพืชข้าว"></i></a>
                 </div>
@@ -114,7 +120,8 @@
                 </div>
                 <div class="title">
                     <i class="dropdown icon"></i>
-                    แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์
+                    พื้นที่เพาะปลูกพืชข้าวโพดเลี้ยงสัตว์
+                    <img src="https://cdn-icons-png.flaticon.com/512/2194/2194856.png" style="width: 16px;" alt="Icon">
                     <a style="float: right;" class=""><i class="info circle blue icon"
                             data-content="แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์"></i></a>
                 </div>
@@ -166,14 +173,7 @@
                             data-content="ความอุดมสมบูรณ์ของดินของพืชข้าวโพดเลี้ยงสัตว์"></i></a>
 
                 </div>
-                <div class="active content">
-                    <div class="ui checkbox square">
-                        <label id="forest_area_label">พื้นที่ป่าไม้/ป่าสงวน</label>
-                        <input type="checkbox" name="radio_select_2" value="forest_area">
-                    </div>
-                    <a style="float: right;" class=""><i class="info circle blue icon"
-                            data-content="พื้นที่ป่าไม้/ป่าสงวน"></i></a>
-                </div>
+
 
             </div>
 
@@ -186,6 +186,8 @@
 
     <!-- axios -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js "></script>
+    <!-- moment -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js "></script>
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <!-- <script src="js/jquery.min.js"></script> -->
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>

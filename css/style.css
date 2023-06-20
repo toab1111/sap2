@@ -4,129 +4,189 @@
 } */
 
 #mapid {
-    width: 100%;
-    height: 100vh ;
-    cursor: crosshair;
+  width: 100%;
+  height: 100vh;
+  cursor: crosshair;
 }
 
 body {
-    margin: 0;
-    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: left;
-    background-color: #fff
+  margin: 0;
+  font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff
 }
 
 select {
-    font-size: 1rem;
-    padding: 2px 5px;
-    text-align-last:center; 
+  font-size: 1rem;
+  padding: 2px 5px;
+  text-align-last: center;
 
 }
 
-#basemap_select{
-    position: absolute;
-    z-index: 102;
-    top: 0;
-    right: 0;
-    margin: 1rem;
-    background-color: white;
+.legend {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+#basemap_select {
+  position: absolute;
+  z-index: 102;
+  top: 0;
+  right: 0;
+  margin: 1rem;
+  background-color: white;
 }
 
 .overlay {
-    position: absolute;
-    left: 20px;
-    width: auto;
-    height: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 400;
-  }
-  
-  .overlay-content {
-    /* position: absolute; */
-    /* top: 50%;
-    left: 50%; */
-    /* transform: translate(-50%, -50%); */
-    background-color: #fff;
-    padding: 10px;
-  }
-
-  .ui.vertical.menu {
-    width: 30rem;
+  position: absolute;
+  left: 20px;
+  width: auto;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 400;
 }
 
-  
-  #map-form label,
-  #map-form input,
-  #map-form button {
-    display: block;
-    margin-bottom: 10px;
+.overlay-content {
+  /* position: absolute; */
+  /* top: 50%;
+    left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  background-color: #fff;
+  padding: 10px;
+}
+
+.ui.vertical.menu {
+  width: 30rem;
+}
+
+
+#map-form label,
+#map-form input,
+#map-form button {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#close-overlay {
+  margin-top: 10px;
+}
+
+.close-year {
+  left: -317px;
+}
+
+.close-year {
+  /* position: relative; */
+  transition: 0.5s ease-in-out;
+  /* transition: right 0.5s ease-in-out; */
+}
+
+.close-form {
+  left: -500px;
+}
+
+.close-form {
+  /* position: relative; */
+  transition: 0.5s ease-in-out;
+  /* transition: right 0.5s ease-in-out; */
+}
+
+
+.open-year {
+  transform: translateX(0);
+}
+
+.open-year {
+  /* position: relative; */
+  transition: 0.5s ease-in-out;
+  /* transition: right 0.5s ease-in-out; */
+}
+
+.open-form {
+  transform: translateX(0);
+}
+
+.open-form {
+  /* position: relative; */
+  transition: 0.5s ease-in-out;
+  /* transition: right 0.5s ease-in-out; */
+}
+
+
+.ui.dropdown .remove.icon {
+  font-size: 0.857143em;
+  float: right;
+  margin: 0;
+  padding: 0;
+  left: -0.7em;
+  top: 0;
+  position: relative;
+  opacity: 0.5;
+}
+
+.ui.dropdown input[value='']~.remove.icon,
+.ui.dropdown input:not([value])~.remove.icon {
+  opacity: 0.0;
+}
+
+.form-select {
+  width: 27rem;
+}
+
+.year-select {
+  width: 27rem;
+}
+
+@media (max-width:552px) {
+
+  .overlay {
+    transform: translateY(100px);
+  }
+
+
+}
+
+@media (max-width:400px) {
+
+  .form-select {
+    width: 25rem;
   }
   
-  #close-overlay {
-    margin-top: 10px;
+  .year-select {
+    width: 25rem;
+  }
+  .close-year {
+    left: -290px;
+  }
+  
+
+  
+  .close-form {
+    /* position: relative; */
+    transition: 0.5s ease-in-out;
+    /* transition: right 0.5s ease-in-out; */
+  }
+  
+
+
+}
+
+@media (max-width:381px) {
+
+  .form-select {
+    width: 23rem;
+  }
+  
+  .year-select {
+    width: 23rem;
   }
 
   .close-year {
-    left: -333px;
-  }
-
-  .close-year {
-    /* position: relative; */
-    transition:  0.5s ease-in-out;
-    /* transition: right 0.5s ease-in-out; */
-  }
-
-  .close-form {
-    left: -500px;
-  }
-
-  .close-form {
-    /* position: relative; */
-    transition:  0.5s ease-in-out;
-    /* transition: right 0.5s ease-in-out; */
-  }
-
-
-  .open-year {
-    transform: translateX(0);
-  }
-
-  .open-year {
-    /* position: relative; */
-    transition:  0.5s ease-in-out;
-    /* transition: right 0.5s ease-in-out; */
-  }
-
-  .open-form {
-    transform: translateX(0);
-  }
-
-  .open-form {
-    /* position: relative; */
-    transition:  0.5s ease-in-out;
-    /* transition: right 0.5s ease-in-out; */
+    left: -260px;
   }
   
-
-  .ui.dropdown .remove.icon {
-    font-size: 0.857143em;
-    float:right; 
-    margin:0;
-    padding:0;
-    left:-0.7em;
-    top:0;
-    position:relative;
-    opacity: 0.5;
-  }
-  
-  .ui.dropdown input[value=''] ~ .remove.icon, .ui.dropdown input:not([value]) ~ .remove.icon
-  {
-     opacity: 0.0;
-  }
-  
-
-
+}
