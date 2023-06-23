@@ -28,10 +28,31 @@
             <div style="display: flex;">
                 <select name="select_year" id="select_year_drop" class="ui fluid search dropdown year">
                 </select>
+                <div class="ui selection dropdown month " style="width: 100%;">
+                    <input name="tags" type="hidden">
+                    <i class="dropdown icon"></i>
+                    <div class="default text">-- แสดงทุกเดือน --</div>
+                    <div class="menu">
+                        <div class="item" data-value="01">มกราคม</div>
+                        <div class="item" data-value="02">กุมภาพันธ์</div>
+                        <div class="item" data-value="03">มีนาคม</div>
+                        <div class="item" data-value="04">เมษายน</div>
+                        <div class="item" data-value="05">พฤษภาคม</div>
+                        <div class="item" data-value="06">มิถุนายน</div>
+                        <div class="item" data-value="07">กรกฎาคม</div>
+                        <div class="item" data-value="08">สิงหาคม</div>
+                        <div class="item" data-value="09">กันยายน</div>
+                        <div class="item" data-value="10">ตุลาคม</div>
+                        <div class="item" data-value="11">พฤศจิกายน</div>
+                        <div class="item" data-value="12">ธันวาคม</div>
+                    </div>
+                    <i class="remove icon"></i>
+                </div>
                 <a id="layers-list-toggler" class="basic ui icon button" style="margin-left: 0.5rem;">
                     <i class="bars icon"></i>
                 </a>
             </div>
+            
         </div>
     </div>
 
@@ -52,7 +73,7 @@
                     <a style="float: right;" class=""><i class="info circle blue icon"
                             data-content="Shapefile แนวเขตป่าสงวนแห่งชาติ (ที่ผ่านการพิจารณาของคณะทำงานพิจารณาแนวเขตป่าสงวนแห่งชาติ และคณะทำงานถ่ายทอดแนวเขตป่าสงวนแห่งชาติ ตามคำสั่งกรมป่าไม้ ที่ 308/2558 ลงวันที่ 28 มกราคม พ.ศ. 2558 และคำสั่งกรมป่าไม้ ที่ 390/2558 ลงวันที่ 6 กุมภาพันธ์ พ.ศ. 2558)"></i></a>
                 </div>
-                <div class="title">
+                <div class="title" id="title-hotspot">
                     <i class="dropdown icon"></i>
                     Hotspot
                     <i style="color: red;" class="gripfire icon"></i>
@@ -60,65 +81,26 @@
                 </div>
                 <div class="content">
                     <div class="ui form">
-                        <div class="ui selection dropdown month" style="width: 100%;">
-                            <input name="tags" type="hidden">
-                            <i class="dropdown icon"></i>
-                            <div class="default text">-- แสดงทุกเดือน --</div>
-                            <div class="menu">
-                                <div class="item" data-value="01">มกราคม</div>
-                                <div class="item" data-value="02">กุมภาพันธ์</div>
-                                <div class="item" data-value="03">มีนาคม</div>
-                                <div class="item" data-value="04">เมษายน</div>
-                                <div class="item" data-value="05">พฤษภาคม</div>
-                                <div class="item" data-value="06">มิถุนายน</div>
-                                <div class="item" data-value="07">กรกฎาคม</div>
-                                <div class="item" data-value="08">สิงหาคม</div>
-                                <div class="item" data-value="09">กันยายน</div>
-                                <div class="item" data-value="10">ตุลาคม</div>
-                                <div class="item" data-value="11">พฤศจิกายน</div>
-                                <div class="item" data-value="12">ธันวาคม</div>
-                            </div>
-                            <i class="remove icon"></i>
-                        </div>
                         <div class="grouped fields hotspot_field">
                         </div>
                     </div>
                 </div>
 
-                <div class="title">
+                <div class="title" id="title-rice">
                     <i class="dropdown icon"></i>
                     พื้นที่เพาะปลูกพืชข้าว
                     <img src="https://cdn-icons-png.flaticon.com/512/898/898133.png" style="width: 16px;" alt="Icon">
                     <a style="float: right;" class=""><i class="info circle blue icon"
                             data-content="แปลงเพาะปลูกพืชข้าว"></i></a>
+
                 </div>
                 <div class="content">
                     <div class="ui form">
-                        <div class="ui selection dropdown month" style="width: 100%;">
-                            <input name="tags" type="hidden">
-                            <i class="dropdown icon"></i>
-                            <div class="default text">-- แสดงทุกเดือน --</div>
-                            <div class="menu">
-                                <div class="item" data-value="01">มกราคม</div>
-                                <div class="item" data-value="02">กุมภาพันธ์</div>
-                                <div class="item" data-value="03">มีนาคม</div>
-                                <div class="item" data-value="04">เมษายน</div>
-                                <div class="item" data-value="05">พฤษภาคม</div>
-                                <div class="item" data-value="06">มิถุนายน</div>
-                                <div class="item" data-value="07">กรกฎาคม</div>
-                                <div class="item" data-value="08">สิงหาคม</div>
-                                <div class="item" data-value="09">กันยายน</div>
-                                <div class="item" data-value="10">ตุลาคม</div>
-                                <div class="item" data-value="11">พฤศจิกายน</div>
-                                <div class="item" data-value="12">ธันวาคม</div>
-                            </div>
-                            <i class="remove icon"></i>
-                        </div>
                         <div class="grouped fields rice_field">
                         </div>
                     </div>
                 </div>
-                <div class="title">
+                <div class="title" id="title-maize">
                     <i class="dropdown icon"></i>
                     พื้นที่เพาะปลูกพืชข้าวโพดเลี้ยงสัตว์
                     <img src="https://cdn-icons-png.flaticon.com/512/2194/2194856.png" style="width: 16px;" alt="Icon">
@@ -127,26 +109,7 @@
                 </div>
                 <div class="content">
                     <div class="ui form">
-                        <div class="ui selection dropdown month " style="width: 100%;">
-                            <input name="tags" type="hidden">
-                            <i class="dropdown icon"></i>
-                            <div class="default text">-- แสดงทุกเดือน --</div>
-                            <div class="menu">
-                                <div class="item" data-value="01">มกราคม</div>
-                                <div class="item" data-value="02">กุมภาพันธ์</div>
-                                <div class="item" data-value="03">มีนาคม</div>
-                                <div class="item" data-value="04">เมษายน</div>
-                                <div class="item" data-value="05">พฤษภาคม</div>
-                                <div class="item" data-value="06">มิถุนายน</div>
-                                <div class="item" data-value="07">กรกฎาคม</div>
-                                <div class="item" data-value="08">สิงหาคม</div>
-                                <div class="item" data-value="09">กันยายน</div>
-                                <div class="item" data-value="10">ตุลาคม</div>
-                                <div class="item" data-value="11">พฤศจิกายน</div>
-                                <div class="item" data-value="12">ธันวาคม</div>
-                            </div>
-                            <i class="remove icon"></i>
-                        </div>
+
                         <div class="grouped fields maize_field">
                         </div>
                     </div>
