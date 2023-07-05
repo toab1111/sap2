@@ -11,23 +11,65 @@
 </head>
 
 <body>
+    <!-- map component -->
     <div id="mapid" style="position: relative; outline: none; "></div>
+
+    <!-- Ku Logo -->
     <div id="map-overlay" class="overlay" style="top: 10px; left: 210px;">
         <div class="overlay-content">
             <div><img src="css/KU_SubLogo_Thai.png" class="small ui image" style="width: 67px;"></div>
         </div>
     </div>
+
+    <!-- nbtc Logo -->
     <div id="map-overlay" class="overlay" style="top: 10px;">
         <div class="overlay-content">
             <div><img src="css/Picture1.png" class="small ui image" style="width: 150px;"></div>
         </div>
     </div>
 
+    <!-- Project name Logo -->
+    <div id="project_name" style="    
+    position: fixed;
+    z-index: 970;
+    top: 10px;
+    left: 310px;">
+        <img id="project_img" src="css/project_name.png" alt="Legend">
+    </div>
+
+
+    <!-- Legend -->
+    <div style="    
+    position: fixed;
+    z-index: 1000;
+    bottom: 20px;
+    right: 52px;
+    /* background-color: white; */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    "> <img id="legend-hotspot" src="css/hotspot_legend.png"
+            style="width: 180px;display: none; background-color: white; margin: 12px;" alt="Legend">
+        <img id="legend-forst" src="css/forest_legend.png"
+            style="width: 180px;display: none; background-color: white; margin: 12px;" alt="Legend">
+        <img id="legend-sf" src="css/sf_legend.png"
+            style="width: 180px;display: none;  background-color: white; margin: 12px;" alt="Legend">
+        <img id="legend-rice" src="css/rice_legend.png"
+            style="width: 380px;display: none; background-color: white; margin: 12px;" alt="Legend">
+        <img id="legend-maize" src="css/maize_legend.png"
+            style="width: 380px; display: none; background-color: white; margin: 12px;" alt="Legend">
+    </div>
+
+
+    <!-- filter component -->
     <div id="map-overlay-year" class="overlay" style="top: 110px; z-index: 1000;">
         <div class="overlay-content year-select">
             <div style="display: flex;">
+                <!-- year select -->
                 <select name="select_year" id="select_year_drop" class="ui fluid search dropdown year">
                 </select>
+
+                <!-- month select -->
                 <div class="ui selection dropdown month " style="width: 100%;">
                     <input name="tags" type="hidden">
                     <i class="dropdown icon"></i>
@@ -48,36 +90,53 @@
                     </div>
                     <i class="remove icon"></i>
                 </div>
+
+                <!-- clear layer -->
+                <a id="clear-select" class="basic ui icon button" style="margin-left: 0.5rem;">
+                    <i class="x icon"></i>
+                </a>
+
+                <!-- hide filter -->
                 <a id="layers-list-toggler" class="basic ui icon button" style="margin-left: 0.5rem;">
                     <i class="bars icon"></i>
                 </a>
             </div>
-            
+
         </div>
     </div>
 
-    <div id="map-overlay-form" class="overlay" style="top: 180px;overflow-y: auto;max-height: 600px;">
+
+    <!-- Layer control component -->
+    <div id="map-overlay-form" class="overlay" style="top: 180px;overflow-y: auto;max-height: 520px;">
         <div class="overlay-content form-select">
             <div class="ui styled accordion" id="layers-list">
-                <div class="title" style="pointer-events: none;">
-                </div>
-                <div class="content">
-                </div>
+
+
+                <!-- Forest checkbox  -->
+                <div class="title" style="pointer-events: none;"></div>
+                <div class="content"></div>
                 <div class="active content">
                     <div class="ui checkbox square">
-                        <label id="forest_area_label">พื้นที่ป่าไม้/ป่าสงวน <i style="color: green;"
+                        <label id="forest_area_label">สภาพพื้นที่ป่าไม้/แนวเขตป่าสงวนแห่งชาติ <i style="color: green;"
                                 class="tree icon"></i>
                         </label>
                         <input type="checkbox" name="radio_select_2" value="forest_area">
                     </div>
-                    <a style="float: right;" class=""><i class="info circle blue icon"
-                            data-content="Shapefile แนวเขตป่าสงวนแห่งชาติ (ที่ผ่านการพิจารณาของคณะทำงานพิจารณาแนวเขตป่าสงวนแห่งชาติ และคณะทำงานถ่ายทอดแนวเขตป่าสงวนแห่งชาติ ตามคำสั่งกรมป่าไม้ ที่ 308/2558 ลงวันที่ 28 มกราคม พ.ศ. 2558 และคำสั่งกรมป่าไม้ ที่ 390/2558 ลงวันที่ 6 กุมภาพันธ์ พ.ศ. 2558)"></i></a>
+                    <a style="float: right;" class=""><i class="info circle blue icon" data-content="สภาพพื้นที่ป่าไม้ : ข้อมูลสภาพพื้นที่ป่าไม้ ปี พ.ศ. 2565 โดยความร่วมมือระหว่างศูนย์วิจัยป่าไม้ คณะวนศาสตร์ มหาวิทยาลัยเกษตรศาสตร์ กับส่วนสำรวจและวิเคราะห์ทรัพยากรป่าไม้ กรมป่าไม้ มีเป้าหมายสำคัญในการจัดทำแผนที่ป่าไม้ของประเทศในระบบสารสนเทศภูมิศาสตร์ เพื่อรองรับและสนับสนุนการวางแผนเชิงนโยบายและการกำหนดแผนปฏิบัติงานในทุกระดับ 
+                             ---------------------------------------------
+                            แนวเขตป่าสงวนแห่งชาติ : ข้อมูลชุดนี้เป็นข้อมูลเกี่ยวกับพื้นที่ป่าสงวนแห่งชาติ คือ ป่าที่ได้กำหนดให้เป็นป่าสงวนแห่งชาติตามพระราชบัญญัติป่าสงวนแห่งชาติ พ.ศ. 2507 จัดทำขึ้นเพื่อรักษาสภาพป่าไม้ ของป่า หรือทรัพยากรธรรมชาติอื่น ให้กระทำได้โดยออกกฎกระทรวงซึ่งต้องมีแผนที่แสดงแนวเขตป่าที่กำหนดเป็นป่าสงวนแห่งชาตินั้นแนบท้ายกฎกระทรวง
+                            "></i></a>
                 </div>
+
+
+
+                <!-- hotspot radio  -->
                 <div class="title" id="title-hotspot">
                     <i class="dropdown icon"></i>
-                    Hotspot
+                    จุดความร้อน
                     <i style="color: red;" class="gripfire icon"></i>
-                    <a style="float: right;" class=""><i class="info circle blue icon" data-content="Hotspot"></i></a>
+                    <a style="float: right;" class=""><i class="info circle blue icon"
+                            data-content="จุดความร้อน คือ ค่าอุณหภูมิพื้นผิวของวัตถุ (Land Surface temperature) ซึ่งเกิดจากการเผาไหม้อินทรีย์สารที่ติดไฟได้ เช่น ต้นไม้ ไม้พุ่ง กิ่งไม้ กอไผ่ ดินอินทรีย์ และชั้นถ่านหินที่อยู่ใต้ดิน สามารถตรวจสอบได้ด้วยดาวเทียม TERRA และดาวเทียม AQUA ระบบ MODIS จุดความร้อนที่ว่านั้น สามารถบอกสถานะ และความรุนแรงของการเผาไหม้ของการเผาไหม้ของพื้นที่ในช่วงเวลานั้นๆ และยังบอกเปลวไฟหรือบริเวณที่ยังคงมีไฟคุกรุ่น ซึ่งมีขนาดพื้นที่ประมาณ 1 ตารางกิโลเมตร  https://fire.gistda.or.th/download/8_shp_modis_daily.html"></i></a>
                 </div>
                 <div class="content">
                     <div class="ui form">
@@ -86,13 +145,14 @@
                     </div>
                 </div>
 
+
+                <!-- rice radio  -->
                 <div class="title" id="title-rice">
                     <i class="dropdown icon"></i>
-                    พื้นที่เพาะปลูกพืชข้าว
+                    พื้นที่เพาะปลูกข้าว
                     <img src="https://cdn-icons-png.flaticon.com/512/898/898133.png" style="width: 16px;" alt="Icon">
                     <a style="float: right;" class=""><i class="info circle blue icon"
-                            data-content="แปลงเพาะปลูกพืชข้าว"></i></a>
-
+                            data-content="พื้นที่เพาะปลูกข้าว จากระบบติดตามสถานการณ์เพาะปลูกพืชเศรษฐกิจของประเทศไทยจากข้อมูลดาวเทียม Eco-Plant สำนักงานพัฒนาเทคโนโลยีอวกาศและภูมิสารสนเทศ (องค์การมหาชน) : GISTDA https://ecoplant.gistda.or.th/"></i></a>
                 </div>
                 <div class="content">
                     <div class="ui form">
@@ -100,43 +160,124 @@
                         </div>
                     </div>
                 </div>
+
+
+                <!-- maize radio  -->
                 <div class="title" id="title-maize">
                     <i class="dropdown icon"></i>
-                    พื้นที่เพาะปลูกพืชข้าวโพดเลี้ยงสัตว์
+                    พื้นที่เพาะปลููกข้าวโพดเลี้ยงสัตว์
                     <img src="https://cdn-icons-png.flaticon.com/512/2194/2194856.png" style="width: 16px;" alt="Icon">
                     <a style="float: right;" class=""><i class="info circle blue icon"
-                            data-content="แปลงเพาะปลูกพืชข้าวโพดเลี้ยงสัตว์"></i></a>
+                            data-content="พื้นที่เพาะปลูกข้าว จากระบบติดตามสถานการณ์เพาะปลูกพืชเศรษฐกิจของประเทศไทยจากข้อมูลดาวเทียม Eco-Plant สำนักงานพัฒนาเทคโนโลยีอวกาศและภูมิสารสนเทศ (องค์การมหาชน) : GISTDA https://ecoplant.gistda.or.th/"></i></a>
                 </div>
                 <div class="content">
                     <div class="ui form">
-
                         <div class="grouped fields maize_field">
                         </div>
                     </div>
                 </div>
-                <div class="title" style="pointer-events: none;">
+
+
+
+
+                <!-- sf rice radio  -->
+                <div class="title" id="title-sf-rice">
+                    <i class="dropdown icon"></i>
+                    ความอุดมสมบูรณ์ของดินของพืชข้าว
+                    <a style="float: right;" class=""><i class="info circle blue icon"
+                            data-content="ความอุดมสมบูรณ์ของดินสำหรับข้าว พัฒนาขึ้นด้วยเทคนิคการเรียนรู้ของเครื่อง (Machine Learning) ด้วยข้อมูลภาพถ่ายดาวเทียม และข้อมูลทางกายภาพของพื้นที่ เพื่อบอกศักยภาพของที่ดินในการเพาะปลูกข้าว โดยสถานีรับสัญญาณดาวเทียมจุฬาภรณ์"></i></a>
                 </div>
                 <div class="content">
-                </div>
-                <div class="active  content">
-                    <div class="ui checkbox radio square sf_rice_check">
-                        <label id="sf_rice_label">ความอุดมสมบูรณ์ของดินของพืชข้าว</label>
-                        <input type="radio" name="radio_select_2" value="sf_rice" id="sf_rice_radio">
+                    <div class="ui form">
+                        <div class="grouped fields" style="display: flex; flex-direction: column;">
+                            <div class="ui checkbox radio square sf_rice_check" style="margin: 5px;">
+                                <label id="">รอบนาปี 2023 </label>
+                                <input type="radio" name="radio_select_2" value="sf-rice_napi2323" id="sf_rice_radio">
+
+                            </div>
+                            <div class="ui checkbox radio square sf_rice_check" style="margin: 5px;">
+                                <label id="">รอบนาปรัง 2023 </label>
+                                <input type="radio" name="radio_select_2" value="sf-rice_naprang2023"
+                                    id="sf_rice_radio">
+                            </div>
+
+                        </div>
                     </div>
-                    <a style="float: right;" class=""><i class="info circle blue icon"
-                            data-content="ความอุดมสมบูรณ์ของดินของพืชข้าว"></i></a>
-
                 </div>
-                <div class="active content">
-                    <div class="ui checkbox radio square sf_maize_check">
-                        <label id="sf_maize_label">ความอุดมสมบูรณ์ของดินของพืชข้าวโพดเลี้ยงสัตว์</label>
-                        <input type="radio" name="radio_select_2" value="sf_maize" id="sf_maize_radio">
+
+
+
+                <!-- sf maize radio  -->
+                <div class="title" id="title-sf-maize">
+                    <i class="dropdown icon"></i>
+                    ความอุดมสมบูรณ์ของดินของพืชข้าวโพดเลี้ยงสัตว์
+                    <a style="float: right;" class=""><i class="info circle blue icon"
+                            data-content="ความอุดมสมบูรณ์ของดินสำหรับข้าวโพดเลี้ยงสัตว์ พัฒนาขึ้นด้วยเทคนิคการเรียนรู้ของเครื่อง (Machine Learning) ด้วยข้อมูลภาพถ่ายดาวเทียม และข้อมูลทางกายภาพของพื้นที่ เพื่อบอกศักยภาพของที่ดินในการเพาะปลูกข้าวโพดเลี้ยงสัตว์ โดยสถานีรับสัญญาณดาวเทียมจุฬาภรณ์"></i></a>
+                </div>
+                <div class="content">
+                    <div class="ui form">
+                        <div class="grouped fields " style="display: flex; flex-direction: column;">
+                            <div class="ui checkbox radio square sf_maize_check" style="margin: 5px;">
+                                <label id="">หน้าฝน 2023</label>
+                                <input type="radio" name="radio_select_2" value="sf-maize_rain2023" id="sf_maize_radio">
+                            </div>
+                            <div class="ui checkbox radio square sf_maize_check" style="margin: 5px;">
+                                <label id="">หน้าแล้ง 2023</label>
+                                <input type="radio" name="radio_select_2" value="sf-maize_drought2023"
+                                    id="sf_maize_radio">
+                            </div>
+
+                        </div>
                     </div>
-                    <a style="float: right;" class=""><i class="info circle blue icon"
-                            data-content="ความอุดมสมบูรณ์ของดินของพืชข้าวโพดเลี้ยงสัตว์"></i></a>
-
                 </div>
 
+
+                <!-- Rice Disease radio  -->
+                <div class="title" id="title-sf-maize">
+                    <i class="dropdown icon"></i>
+                    คาดการณ์โรคพืชและแมลงสำหรับข้าว
+                    <a style="float: right;" class=""><i class="info circle blue icon"
+                            data-content="คาดการณ์โรคและแมลงสำหรับข้าว คาดการณ์ล่วงหน้า 7 วัน พัฒนาขึ้นด้วยเทคนิคการเรียนรู้ของเครื่อง (Machine Learning) ด้วยข้อมูลสภาพอากาศ และช่วงอายุพืช เพื่อให้เกษตรกรป้องกันและเตรียมรับมือกับสถานการณ์การระบาดของโรคและแมลง ซึ่งอาจก่อให้เกิดความเสียหายต่อผลผลิตภายในแปลงเพาะปลูกได้  โดยสถานีรับสัญญาณดาวเทียมจุฬาภรณ์"></i></a>
+                </div>
+                <div class="content">
+                    <div class="ui form">
+                        <div class="grouped fields " style="display: flex; flex-direction: column;">
+                            <div class="ui checkbox radio square sf_maize_check" style="margin: 5px;">
+                                <label id="">หน้าฝน 2023</label>
+                                <input type="radio" name="radio_select_2" value="sf_maize" id="sf_maize_radio">
+                            </div>
+                            <div class="ui checkbox radio square sf_maize_check" style="margin: 5px;">
+                                <label id="">หน้าแล้ง 2023</label>
+                                <input type="radio" name="radio_select_2" value="sf_maize" id="sf_maize_radio">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Maize Disease radio  -->
+                <div class="title" id="title-sf-maize">
+                    <i class="dropdown icon"></i>
+                    คาดการณ์โรคพืชและแมลงสำหรับข้าวโพดเลี้ยงสัตว์
+                    <a style="float: right;" class=""><i class="info circle blue icon"
+                            data-content="คาดการณ์โรคและแมลงสำหรับข้าวโพดเลี้ยงสัตว์ คาดการณ์ล่วงหน้า 7 วัน พัฒนาขึ้นด้วยเทคนิคการเรียนรู้ของเครื่อง (Machine Learning) ด้วยข้อมูลสภาพอากาศ และช่วงอายุพืช เพื่อให้เกษตรกรป้องกันและเตรียมรับมือกับสถานการณ์การระบาดของโรคและแมลง ซึ่งอาจก่อให้เกิดความเสียหายต่อผลผลิตภายในแปลงเพาะปลูกได้  โดยสถานีรับสัญญาณดาวเทียมจุฬาภรณ์"></i></a>
+                </div>
+                <div class="content">
+                    <div class="ui form">
+                        <div class="grouped fields " style="display: flex; flex-direction: column;">
+                            <div class="ui checkbox radio square sf_maize_check" style="margin: 5px;">
+                                <label id="">หน้าฝน 2023</label>
+                                <input type="radio" name="radio_select_2" value="sf_maize" id="sf_maize_radio">
+                            </div>
+                            <div class="ui checkbox radio square sf_maize_check" style="margin: 5px;">
+                                <label id="">หน้าแล้ง 2023</label>
+                                <input type="radio" name="radio_select_2" value="sf_maize" id="sf_maize_radio">
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
@@ -151,10 +292,13 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js "></script>
     <!-- moment -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js "></script>
+    <!-- jquery -->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <!-- <script src="js/jquery.min.js"></script> -->
+    <!-- leaflet -->
     <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+    <!-- semantic -->
     <script src="js/semantic.min.js"></script>
+    <!-- js -->
     <script src="js/map.js"></script>
 
 </body>

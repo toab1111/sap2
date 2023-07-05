@@ -76,7 +76,7 @@ select {
 }
 
 .close-year {
-  left: -317px;
+  left: -357px;
 }
 
 .close-year {
@@ -134,23 +134,45 @@ select {
 }
 
 .form-select {
-  width: 27rem;
+  width: 30rem;
 }
 
 .year-select {
-  width: 27rem;
+  width: 30rem;
 }
-
-@media (max-width:552px) {
+#project_img{
+  width: 650px;
+}
+@media (max-width:1131px) {
 
   .overlay {
     transform: translateY(100px);
+  }
+  #project_name{
+    transform: translateX(-315px);
+  }
+
+
+}
+@media (max-width:809px) {
+
+  #project_img{
+    width: 500px;
   }
 
 
 }
 
-@media (max-width:400px) {
+@media (max-width:666px) {
+
+  #project_img{
+    width: 400px;
+  }
+
+
+}
+
+@media (max-width:465px) {
 
   .form-select {
     width: 25rem;
@@ -191,3 +213,6 @@ select {
   
 }
 
+.leaflet-popup-content {
+  width: auto;
+}
